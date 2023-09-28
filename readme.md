@@ -9,7 +9,7 @@ Module developed to standardize the creation of resource groups.
 
 | Module Version | Terraform Version | AzureRM Version |
 |----------------|-------------------| --------------- |
-| v1.0.0         | v1.3.8            | 3.43.0          |
+| v1.0.0         | v1.5.7            | 3.74.0          |
 
 ## Specifying a version
 
@@ -35,6 +35,9 @@ output "name" {
 output "location" {
   value = module.<resource group name>.location
 }
+output "id" {
+  value = module.<resource group name>.id
+}
 ```
 
 ## Input variables
@@ -51,6 +54,7 @@ output "location" {
 |------|-------------|
 | name | resource group name|
 | location | resource group location |
+| id | resource group id |
 
 ## Documentation
 Terraform Resource Group: <br>
