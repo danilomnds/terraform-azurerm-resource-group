@@ -1,27 +1,29 @@
 # Module - Resource Group
-[![COE](https://img.shields.io/badge/Created%20By-CCoE-blue)]()
-[![HCL](https://img.shields.io/badge/language-HCL-blueviolet)](https://www.terraform.io/)
-[![Azure](https://img.shields.io/badge/provider-Azure-blue)](https://registry.terraform.io/providers/hashicorp/azurerm/latest)
+[![COE](https://img.shields.io/badge/Created%20By-CCoE-blue)]()[![HCL](https://img.shields.io/badge/language-HCL-blueviolet)](https://www.terraform.io/)[![Azure](https://img.shields.io/badge/provider-Azure-blue)](https://registry.terraform.io/providers/hashicorp/azurerm/latest)
 
 Module developed to standardize the creation of resource groups.
 
 ## Compatibility Matrix
 
-| Module Version | Terraform Version | AzureRM Version |
-|----------------|-------------------| --------------- |
-| v1.0.0         | v1.5.7            | 3.74.0          |
+| Module Version | Terraform Version | AzureRM Version | Notes |
+|---|---|---|---|
+| v1.0.0 | v1.3.8 | 3.74.0 | module creation |
+| v1.1.0 | v1.3.8 | 3.74.0 | output addition |
+| v1.2.0 | v1.14.3 | 4.57.0 | module review to azurerm 4 |
 
+---
 ## Specifying a version
 
-To avoid that your code get updates automatically, is mandatory to set the version using the `source` option. 
-By defining the `?ref=***` in the the URL, you can define the version of the module.
+To prevent automatic code updates, you must specify a version using the `source` option.
+Define the `?ref=***` parameter in the URL to specify the module version.
 
-Note: The `?ref=***` refers a tag on the git module repo.
+Note: The `?ref=***` parameter refers to a tag in the git module repository.
 
+---
 ## Use case
 ```hcl
 module "<resource group name>" {
-  source                         = "git::https://github.com/danilomnds/terraform-azurerm-resource-group?ref=v1.0.0"
+  source                         = "git::https://github.com/danilomnds/terraform-azurerm-resource-group?ref=v1.2.0"
   name                           = "<resource group name>"
   location                       = "<region>"  
   tags = {
@@ -39,16 +41,17 @@ output "id" {
   value = module.<resource group name>.id
 }
 ```
-
+---
 ## Input variables
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| name | name that will be given to the resource group | `string` | n/a | `Yes` |
-| location | azure region | `string` | n/a | `Yes` |
-| tags | tags for the resource | `map(string)` | `{}` | No
+| name | The Azure Region where the Resource Group should exist | `string` | n/a | `Yes` |
+| location | The Name which should be used for this Resource Group | `string` | n/a | `Yes` |
+| tags | A mapping of tags which should be assigned to the Resource Group | `map(string)` | `{}` | No
 
-  ## Output variables
+---
+## Output variables
 
 | Name | Description |
 |------|-------------|
